@@ -6,8 +6,8 @@ import { useMobile } from '../hooks/useMobile';
 const menuItems = [
     { to: "/", icon: FiHome, label: "Inicio" },
     { to: "/mapa", icon: FiMap, label: "Mapa" },
-    { to: "/gula", icon: FiHeart, label: "Gula" },
-    { to: "/ny-atti", icon: FiUser, label: "Ny atti" },
+    { to: "/gula", icon: FiHeart, label: "Guia" },
+    { to: "/ny-atti", icon: FiUser, label: "Yo" },
 ];
 
 const Sidebar = () => {
