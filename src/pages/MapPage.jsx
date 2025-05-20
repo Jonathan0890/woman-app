@@ -3,6 +3,7 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import { useGeolocation } from '../hooks/useGeolocation';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { UserMarker } from '../components/UserMarker';
+import Sidebar from '../components/Sidebar';
 
 const MapPage = () => {
     const [selectedLocation, setSelectedLocation] = useState(null);
@@ -56,42 +57,45 @@ const MapPage = () => {
     }, [calculateDistances]);
 
     return (
-        <div className="h-96 w-full rounded-lg shadow-lg">
-            <LoadScript
-                googleMapsApiKey={import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY}
-                libraries={['places']}
-            >
-                {geoError ? (
-                    <div className="text-red-500 p-4">{geoError}</div>
-                ) : (
-                    <GoogleMap
-                        mapContainerStyle={mapStyles}
-                        zoom={15}
-                        center={userLocation || initialLocations[0].position}
-                    >
-                        {locations.map((location, index) => (
-                            <Marker
-                                key={index}
-                                position={location.position}
-                                onClick={() => setSelectedLocation(location)}
-                            >
-                                {selectedLocation === location && (
-                                    <InfoWindow onCloseClick={() => setSelectedLocation(null)}>
-                                        <div className="text-gray-700">
-                                            <h3 className="font-bold">{location.name}</h3>
-                                            <p>{location.distance} desde tu ubicación</p>
-                                        </div>
-                                    </InfoWindow>
-                                )}
-                            </Marker>
-                        ))}
+        <>
+            <Sidebar />
+            <div className="h-96 w-full rounded-lg shadow-lg">
+                <LoadScript
+                    googleMapsApiKey={import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY}
+                    libraries={['places']}
+                >
+                    {geoError ? (
+                        <div className="text-red-500 p-4">{geoError}</div>
+                    ) : (
+                        <GoogleMap
+                            mapContainerStyle={mapStyles}
+                            zoom={15}
+                            center={userLocation || initialLocations[0].position}
+                        >
+                            {locations.map((location, index) => (
+                                <Marker
+                                    key={index}
+                                    position={location.position}
+                                    onClick={() => setSelectedLocation(location)}
+                                >
+                                    {selectedLocation === location && (
+                                        <InfoWindow onCloseClick={() => setSelectedLocation(null)}>
+                                            <div className="text-gray-700">
+                                                <h3 className="font-bold">{location.name}</h3>
+                                                <p>{location.distance} desde tu ubicación</p>
+                                            </div>
+                                        </InfoWindow>
+                                    )}
+                                </Marker>
+                            ))}
 
-                        {/* Componente UserMarker seguro */}
-                        <UserMarker userLocation={userLocation} />
-                    </GoogleMap>
-                )}
-            </LoadScript>
-        </div>
+                            {/* Componente UserMarker seguro */}
+                            <UserMarker userLocation={userLocation} />
+                        </GoogleMap>
+                    )}
+                </LoadScript>
+            </div>
+        </>
     );
 };
 
