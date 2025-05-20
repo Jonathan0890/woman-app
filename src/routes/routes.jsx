@@ -3,6 +3,7 @@ import  {MainLayout}  from '../layout/MainLayout'
 import HomePrincipal from '../pages/HomePrincipal'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
+import MapPage from '../pages/MapPage'
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact/>
+            },
+            {
+                path: '/mapa',
+                element: <MapPage/>
             }
         ]
     }
