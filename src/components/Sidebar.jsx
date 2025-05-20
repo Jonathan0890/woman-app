@@ -1,13 +1,14 @@
 import { useState, useCallback } from 'react';
-import { FiHome, FiMap, FiHeart, FiUser, FiMenu, FiChevronLeft } from 'react-icons/fi';
+import { FiHome, FiMap, FiHeart, FiUser, FiMenu, FiChevronLeft, FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useMobile } from '../hooks/useMobile';
 
 const menuItems = [
     { to: "/", icon: FiHome, label: "Inicio" },
     { to: "/mapa", icon: FiMap, label: "Mapa" },
-    { to: "/gula", icon: FiHeart, label: "Guia" },
-    { to: "/ny-atti", icon: FiUser, label: "Yo" },
+    { to: "/guia", icon: FiHeart, label: "Guia" },
+    { to: "/yo", icon: FiUser, label: "Yo" },
+    { to: "/contact", icon: FiMail, label: "Contactanos" },
 ];
 
 const Sidebar = () => {
