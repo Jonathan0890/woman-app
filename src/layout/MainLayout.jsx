@@ -7,7 +7,7 @@ export const MainLayout = () => {
     return (
         <div className="app">
             <header>
-                <h1>{isMobile ? 'Versión Móvil' : 'Versión Escritorio'}</h1>
+                 <h1>{isMobile ? '' : ''}</h1>
             </header>
 
             <main>
@@ -15,7 +15,7 @@ export const MainLayout = () => {
             </main>
 
             <footer>
-                {isMobile ? 'Mobile Footer' : 'Desktop Footer'}
+                {isMobile ? '' : ''}
             </footer>
         </div>
     );
